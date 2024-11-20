@@ -1,0 +1,2094 @@
+
+
+Insertion Algorithm
+---------------------------
+
+#include <iostream>
+#include <set>
+using namespace std;
+int main()
+{
+set<int> st;
+set<int>::iterator it = st.begin();
+set<int>::iterator it1, it2;
+pair<set<int>::iterator, bool> ptr;
+
+for (int i = 1; i < 10; i++)
+st.insert(i * 8);
+cout << "The set elements after insertion are : ";
+for (it1 = st.begin(); it1 != st.end(); ++it1)
+cout << *it1 << " ";
+it = st.begin();
+cout << endl;
+++it;
+st.erase(it);
+cout << "\nThe set elements after 1st deletion are : ";
+for (it1 = st.begin(); it1 != st.end(); ++it1)
+cout << *it1 << " ";
+st.erase(40);
+cout << "\nThe set elements after 2nd deletion are : ";
+for (it1 = st.begin(); it1 != st.end(); ++it1)
+cout << *it1 << " ";
+}
+
+
+Merge two array Algorithm
+---------------------------
+
+#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+int main()
+{
+// initializing 1st container
+vector<int> arr1 = { 1, 4, 6, 3, 2 };
+// initializing 2nd container
+vector<int> arr2 = { 6, 2, 5, 7, 1 };
+// declaring resultant container
+vector<int> arr3(10);
+// sorting initial containers
+sort(arr1.begin(), arr1.end());
+sort(arr2.begin(), arr2.end());
+// using merge() to merge the initial containers
+merge(arr1.begin(), arr1.end(), arr2.begin(), arr2.end(), arr3.begin());
+// printing the resultant merged container
+cout << "The container after merging initial containers is : ";
+for (int i = 0; i < arr3.size(); i++)
+cout << arr3[i] << " ";
+return 0;
+}
+
+
+
+
+Insertion Algorithm
+---------------------------
+
+#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+int main()
+{
+// Initialising the vector
+vector<int> vector_name{ 1, 2, 3, 4, 5 };
+// Printing out the original vector
+cout << "Original vector :\n";
+for (auto x : vector_name)
+cout << x << " ";
+cout << "\n";
+// Inserting the value 100 at position 3(0-based
+// indexing) in the vector
+vector_name.insert(vector_name.begin() + 3, 100);
+// Printing the modified vector
+cout << "Vector after inserting 100 at position 3 :\n";
+for (auto x : vector_name)
+cout << x << " ";
+cout << "\n";
+// Inserting the value 500 at position 1(0-based
+// indexing) in the vector
+vector_name.insert(vector_name.begin() + 1, 500);
+// Printing the modified vector
+cout << "Vector after inserting 500 at position 1 :\n";
+for (auto x : vector_name)
+cout << x << " ";
+int valueToBeDeleted = 3;
+ auto it = find(vector_name.begin(), vector_name.end(),
+ valueToBeDeleted);
+ if (it != vector_name.end()) {
+ vector_name.erase(it);
+ }
+ cout << endl
+ << "Vector after deleting valueToBeDeleted "
+ << endl;
+ for (auto element : vector_name) {
+ cout << element << " ";
+ }
+ cout << endl;
+ return 0;
+}
+
+
+ Stack Operations
+---------------------------
+#include <iostream>
+#include <stack>
+using namespace std;
+int main()
+{
+// Empty stack
+stack<int> mystack;
+mystack.push(0);
+mystack.push(1);
+mystack.push(2);
+// Printing content of stack
+while (!mystack.empty()) {
+cout << ' ' << mystack.top();
+mystack.pop();
+cout<<"\n";
+}
+}
+
+Map algorithm
+---------------------------
+#include <iostream>
+#include <map>
+using namespace std;
+int main() {
+map<int, string> student;
+// use [] operator to add elements
+student[1] = "Alan";
+student[2] = "Niranjan";
+// use insert() method to add elements
+student.insert(make_pair(3, "Nehal"));
+student.insert(make_pair(4, "Mathew"));
+// add elements with duplicate keys
+student[5] = "Jasmine";
+student[5] = "Sathwik";
+for (int i = 1; i <= student.size(); ++i) {
+cout << "Student[" << i << "]: " << student[i] << endl;
+}
+return 0;
+}
+Output:
+
+
+Mergesort 1
+---------------------------
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+void merge(vector<int>& arr, int left, int mid, int right) {
+int n1 = mid - left + 1;
+int n2 = right - mid;
+vector<int> leftArr(n1);
+vector<int> rightArr(n2);
+for (int i = 0; i < n1; i++)
+leftArr[i] = arr[left + i];
+for (int j = 0; j < n2; j++)
+rightArr[j] = arr[mid + 1 + j];
+int i = 0;
+int j = 0;
+int k = left;
+while (i < n1 && j < n2) {
+if (leftArr[i] <= rightArr[j]) {
+arr[k] = leftArr[i];
+i++;
+} else {
+arr[k] = rightArr[j];
+j++;
+}
+k++;
+}
+while (i < n1) {
+arr[k] = leftArr[i];
+i++;
+k++;
+}
+while (j < n2) {
+arr[k] = rightArr[j];
+j++;
+k++;
+}
+}
+void mergeSort(vector<int>& arr, int left, int right) {
+if (left >= right)
+return;
+int mid = left + (right - left) / 2;
+mergeSort(arr, left, mid);
+mergeSort(arr, mid + 1, right);
+merge(arr, left, mid, right);
+}
+void printArray(const std::vector<int>& arr) {
+for (int num : arr)
+cout << num << " ";
+cout << "\n";
+}
+int main() {
+int n;
+cout << "Enter the number of elements" << endl;
+cin >> n;
+vector<int> arr(n);
+cout << "Enter " << n << " elements: " << endl;
+for (int i=0; i<n; i++)
+cin >> arr[i];
+cout << "Original array: ";
+printArray(arr);
+mergeSort(arr, 0, arr.size() - 1);
+cout << "Sorted array: ";
+printArray(arr);
+return 0;
+}
+
+
+Mergesort linkedlist
+---------------------------
+#include <iostream>
+#include <list>
+#include <iterator>
+#include <algorithm>
+// Function to merge two sorted linked lists
+std::list<int> merge(const std::list<int>& left, const std::list<int>& right) {
+ std::list<int> result;
+ auto it_left = left.begin();
+ auto it_right = right.begin();
+ // Merge the two lists
+ while (it_left != left.end() && it_right != right.end()) {
+ if (*it_left <= *it_right) {
+ result.push_back(*it_left);
+ ++it_left;
+ } else {
+ result.push_back(*it_right);
+ ++it_right;
+ }
+ }
+ // Copy the remaining elements
+ result.insert(result.end(), it_left, left.end());
+ result.insert(result.end(), it_right, right.end());
+ return result;
+}
+// Function to perform merge sort on a linked list
+std::list<int> mergeSort(const std::list<int>& inputList) {
+ // Base case: if the list is empty or has one element, it is already sorted
+ if (inputList.size() <= 1) {
+ return inputList;
+ }
+ // Split the list into two halves
+ auto middle = std::next(inputList.begin(), inputList.size() / 2);
+ std::list<int> left(inputList.begin(), middle);
+ std::list<int> right(middle, inputList.end());
+ // Recursively sort the two halves
+ left = mergeSort(left);
+ right = mergeSort(right);
+ // Merge the sorted halves
+ return merge(left, right);
+}
+// Helper function to print the elements of a list
+void printList(const std::list<int>& lst) {
+ for (const int& value : lst) {
+ std::cout << value << " ";
+ }
+ std::cout << std::endl;
+}
+int main() {
+ // Create a linked list with some unsorted elements
+ std::list<int> lst = {38, 27, 43, 3, 9, 82, 10};
+ std::cout << "Unsorted list: ";
+ printList(lst);
+ // Perform merge sort on the list
+ std::list<int> sortedList = mergeSort(lst);
+ std::cout << "Sorted list: ";
+ printList(sortedList);
+ return 0;
+}
+
+Mergesort using STL
+---------------------------
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <chrono>
+using namespace std;
+// Merge Sort using STL algorithms
+void mergeSort(vector<int>& arr) {
+ if (arr.size() <= 1) {
+ return; // Base case: already sorted
+ }
+ int mid = arr.size() / 2;
+ vector<int> left(arr.begin(), arr.begin() + mid);
+ vector<int> right(arr.begin() + mid, arr.end());
+ mergeSort(left);
+ mergeSort(right);
+ merge(left.begin(), left.end(), right.begin(), right.end(),
+arr.begin());
+}
+int main() {
+ vector<int> arr = {5, 2, 4, 6, 1, 3};
+ cout << "Unsorted array: ";
+ for (int num : arr) {
+ cout << num << " ";
+ }
+ cout << endl;
+ // Measure execution time
+ auto start = chrono::high_resolution_clock::now();
+ mergeSort(arr);
+ auto end = chrono::high_resolution_clock::now();
+ cout << "Sorted array: ";
+ for (int num : arr) {
+ cout << num << " ";
+ }
+ cout << endl;
+ // Calculate and print execution time
+ chrono::duration<double> elapsed = end - start;
+ cout << "Time taken: " << elapsed.count() << " seconds" << endl;
+ cout << "Time Complexity: O(n log n)" << endl; // Always O(n log n)
+ return 0;
+}
+
+Insertion Sort
+---------------------------
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+void insertionSort(vector<int>& arr) {
+ for (int i = 1; i < arr.size(); ++i) {
+ int key = arr[i];
+ int j = i - 1;
+ while (j >= 0 && arr[j] > key) {
+ arr[j + 1] = arr[j];
+ --j;
+ }
+ arr[j + 1] = key;
+ }
+}
+int main() {
+ vector<int> arr = {5, 2, 4, 6, 1, 3};
+ cout << "Unsorted array: ";
+ for (int num : arr) {
+ cout << num << " ";
+ }
+ cout << endl;
+ insertionSort(arr);
+ cout << "Sorted array: ";
+ for (int num : arr) {
+ cout << num << " ";
+ }
+ cout << endl;
+ return 0;
+}
+
+insertion Linked list
+---------------------------
+#include <iostream>
+#include <list>
+using namespace std;
+// Node structure for the linked list
+struct Node {
+ int data;
+ Node* next;
+ Node(int value) : data(value), next(nullptr) {}
+};
+// Function to insert a new node at the beginning of the sorted list
+void insertSorted(list<Node*>& head, int value) {
+ Node* newNode = new Node(value);
+ auto current = head.begin();
+ // Iterate through the list to find the correct position for insertion
+ while (current != head.end() && (*current)->data < value) {
+ ++current;
+ }
+ newNode->next = *current; // Link the new node
+ head.insert(current, newNode); // Insert at the current position
+}
+int main() {
+ list<Node*> list1;
+ // Create a sample sorted linked list (can be modified)
+ list1.push_back(new Node(3));
+ list1.push_back(new Node(5));
+ list1.push_back(new Node(8));
+ cout << "Original List: ";
+ for (auto node : list1) {
+ cout << node->data << " ";
+ }
+ cout << endl;
+ // Perform Insertion Sort
+ insertSorted(list1, 1); // Insert value 1
+ insertSorted(list1, 2); // Insert value 2
+ insertSorted(list1, 7); // Insert value 7
+ cout << "Sorted List: ";
+ for (auto node : list1) {
+ cout << node->data << " ";
+ }
+ cout << endl;
+ return 0;
+}
+
+
+Insertion sort 
+---------------------------
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <chrono>
+using namespace std;
+void InsertionSort(vector<int>& arr, int size) {
+ for (int step = 1; step < size; step++) {
+ int key = arr[step];
+ int j = step - 1;
+ //Now we compare key with each element on its left until an element smaller than the key is
+found.
+ //For descending order, we simply change key < arr[j] to key > arr[j].
+ while (key < arr[j] && j >= 0) {
+ arr[j + 1] = arr[j];
+ --j;
+ }
+ arr[j + 1] = key;
+ }
+}
+void printArray(const std::vector<int>& arr) {
+for (int num : arr)
+cout << num << " ";
+cout << "\n";
+}
+int main() {
+ vector<int> arr = {5, 2, 4, 6, 1, 3};
+ cout << "Unsorted array: ";
+ for (int num : arr) {
+ cout << num << " ";
+ }
+ cout << endl;
+ // Measure execution time
+ auto start = chrono::high_resolution_clock::now();
+ InsertionSort(arr, arr.size()-1);
+ auto end = chrono::high_resolution_clock::now();
+ cout << "Sorted array: ";
+ for (int num : arr) {
+ cout << num << " ";
+ }
+ cout << endl;
+ // Calculate and print execution time
+ chrono::duration<double> elapsed = end - start;
+ cout << "Time taken: " << elapsed.count() << " seconds" << endl;
+ cout << "Time Complexity: O(n log n)" << endl; // Always O(n log n)
+ return 0;
+}
+Largest subbaray bf
+---------------------------
+#include <iostream>
+#include <vector>
+#include <algorithm>
+int largestSubarrayBruteForce(const std::vector<int>& arr) {
+ int maxLen = 0;
+ int maxSum = 0;
+ for (int i = 0; i < arr.size(); i++) {
+ for (int j = i; j < arr.size(); j++) {
+ int sum = 0;
+ for (int k = i; k <= j; k++) {
+ sum += arr[k];
+ }
+ if (sum > maxSum && j - i + 1 > maxLen) {
+ maxSum = sum;
+ maxLen = j - i + 1;
+ }
+ }
+ }
+ return maxLen;
+}
+int largestSubarraySTL(const std::vector<int>& arr) {
+ int n = arr.size();
+ std::vector<int> prefixSum(n + 1, 0);
+ for (int i = 0; i < n; i++) {
+ prefixSum[i + 1] = prefixSum[i] + arr[i];
+ }
+ int maxLen = 0;
+ int maxSum = 0;
+ for (int i = 0; i < n; i++) {
+ for (int j = i; j < n; j++) {
+ int sum = prefixSum[j + 1] - prefixSum[i];
+ if (sum > maxSum && j - i + 1 > maxLen) {
+ maxSum = sum;
+ maxLen = j - i + 1;
+ }
+ }
+ }
+ return maxLen;
+}
+int main() {
+ std::vector<int> arr = {-2,1,-3,4,-1,2,1,-5,4,-3,7};
+ int bruteForceMaxLen = largestSubarrayBruteForce(arr);
+ int stlMaxLen = largestSubarraySTL(arr);
+ std::cout << "Brute Force Method: Largest subarray length is " <<
+bruteForceMaxLen << std::endl;
+ std::cout << "STL Method: Largest subarray length is " << stlMaxLen <<
+std::endl;
+return 0;
+}
+
+Maximum subarray
+---------------------------
+#include <iostream>
+#include <vector>
+#include <algorithm>
+// Function to find the maximum sum of a subarray
+int maxCrossingSum(const std::vector<int>& arr, int low, int high) {
+ if (low == high)
+ return arr[low];
+ int mid = (low + high) / 2;
+ int leftSum = maxCrossingSum(arr, low, mid);
+ int rightSum = maxCrossingSum(arr, mid + 1, high);
+ // Check for a crossing subarray
+ int sum = 0;
+ for (int i = mid; i >= low && arr[i] > 0; i--) {
+ sum += arr[i];
+ }
+ if (sum > 0) {
+ return sum;
+ }
+ // Check for a rightmost crossing subarray
+ sum = 0;
+ for (int i = high; i >= mid + 1 && arr[i] > 0; i--) {
+ sum += arr[i];
+ }
+ if (sum > 0) {
+ return sum;
+ }
+ // Check for a leftmost crossing subarray
+ sum = 0;
+ for (int i = low; i <= mid && arr[i] > 0; i++) {
+ sum += arr[i];
+ }
+ if (sum > 0) {
+ return sum;
+ }
+ // If no crossing subarray found, return the maximum of left and right
+sums
+ return std::max(leftSum, rightSum);
+}
+int maxSubArrayDivideConquer(const std::vector<int>& arr) {
+ int n = arr.size();
+ if (n == 1)
+ return arr[0];
+ int mid = n / 2;
+ int leftSum = maxSubArrayDivideConquer(std::vector<int>(arr.begin(),
+arr.begin() + mid));
+ int rightSum = maxSubArrayDivideConquer(std::vector<int>(arr.begin() +
+mid, arr.end()));
+ // Find the maximum sum of a subarray crossing the mid
+ return std::max(leftSum, rightSum) + maxCrossingSum(arr, 0, n - 1);
+}
+int main() {
+ std::vector<int> arr = {1, 2, 3,-6, 4, 5,-3};
+ int maxLen = maxSubArrayDivideConquer(arr);
+ std::cout << "Largest subarray length is " << maxLen << std::endl;
+ return 0;
+}
+
+Kadanes 
+---------------------------
+#include <vector>
+#include <bits/stdc++.h>
+using namespace std;
+int kadanes(vector<int>& nums) {
+int maxSum = nums[0];
+int curSum = 0;
+for (int n : nums) {
+curSum = max(curSum, 0);
+curSum += n;
+maxSum = max(maxSum, curSum);
+}
+return maxSum;
+}
+int main(){
+// Initializer list
+vector<int> vector1 = { -2, 1, -3, 4, -1, 2, 1, -5, 4};
+cout<<kadanes(vector1);
+}
+
+Kadanes 2
+---------------------------
+#include <iostream>
+#include <vector>
+#include <chrono>
+using namespace std;
+// Function to implement Kadane's algorithm
+int maxSubArraySum(const vector<int>& arr) {
+ int n = arr.size();
+ if (n == 0)
+ return 0;
+ int maxSum = arr[0];
+ int currentSum = arr[0];
+ for (int i = 1; i < n; i++) {
+ if (currentSum > 0)
+ currentSum = arr[i];
+ else
+ currentSum += arr[i];
+ if (currentSum > maxSum) {
+ maxSum = currentSum;
+ int start = i - (arr[i] == currentSum ? 1 : 2);
+ cout << "Start index: " << start << endl;
+ cout << "End index: " << i << endl;
+ cout << "Maximum sum: " << maxSum << endl;
+ }
+ }
+ return maxSum;
+}
+int main() {
+ vector<int> arr = {-2, -3, 4, -1, -2, 1, 5, -3};
+ auto start = chrono::high_resolution_clock().now();
+ int maxSum = maxSubArraySum(arr);
+ auto stop = chrono::high_resolution_clock().now();
+ chrono::duration<double> diff = stop - start;
+ cout << "Time taken: " << diff.count() << " seconds" << endl;
+ return 0;
+}
+Output:
+
+
+Matrix multiplication
+---------------------------
+#include <bits/stdc++.h>
+using namespace std;
+int f(vector<int>& arr, int i, int j, vector<vector<int>>& dp){
+
+ // base condition
+ if(i == j)
+ return 0;
+
+ if(dp[i][j]!=-1)
+ return dp[i][j];
+
+ int mini = INT_MAX;
+
+ // partioning loop
+ for(int k = i; k<= j-1; k++){
+
+ int ans = f(arr,i,k,dp) + f(arr, k+1,j,dp) + arr[i-1]*arr[k]*arr[j];
+
+ mini = min(mini,ans);
+
+ }
+
+ return mini;
+}
+int matrixMultiplication(vector<int>& arr, int N){
+
+ vector<vector<int>> dp(N,vector<int>(N,-1));
+
+ int i =1;
+ int j = N-1;
+
+
+ return f(arr,i,j,dp);
+
+
+}
+int main() {
+vector<int> arr = {15,25,35,40,50,60};
+int n = arr.size();
+cout<<"The minimum number of operations is "<<matrixMultiplication(arr,n);
+return 0;
+}
+
+Strassen
+---------------------------
+#include <iostream>
+#include <vector>
+using namespace std;
+using Matrix = vector<vector<double>>;
+// Function to create an empty matrix of size n x n
+Matrix createMatrix(int n) {
+ return Matrix(n, vector<double>(n, 0));
+}
+// Function to add two matrices
+Matrix add(const Matrix& A, const Matrix& B) {
+ int n = A.size();
+ Matrix C = createMatrix(n);
+ for (int i = 0; i < n; ++i) {
+ for (int j = 0; j < n; ++j) {
+ C[i][j] = A[i][j] + B[i][j];
+ }
+ }
+ return C;
+}
+// Function to subtract two matrices
+Matrix subtract(const Matrix& A, const Matrix& B) {
+ int n = A.size();
+ Matrix C = createMatrix(n);
+ for (int i = 0; i < n; ++i) {
+ for (int j = 0; j < n; ++j) {
+ C[i][j] = A[i][j] - B[i][j];
+ }
+ }
+ return C;
+}
+// Function to multiply two matrices (standard multiplication)
+Matrix multiply(const Matrix& A, const Matrix& B) {
+ int n = A.size();
+ Matrix C = createMatrix(n);
+ for (int i = 0; i < n; ++i) {
+ for (int j = 0; j < n; ++j) {
+ for (int k = 0; k < n; ++k) {
+ C[i][j] += A[i][k] * B[k][j];
+ }
+ }
+ }
+ return C;
+}
+// Strassen's algorithm for matrix multiplication
+Matrix strassen(const Matrix& A, const Matrix& B, int& operationCount) {
+ int n = A.size();
+
+ // Base case: 1x1 matrix
+ if (n == 1) {
+ operationCount++;
+ Matrix C = createMatrix(1);
+ C[0][0] = A[0][0] * B[0][0];
+ return C;
+ }
+ // Split matrices into quadrants
+ int newSize = n / 2;
+ Matrix A11(newSize, vector<double>(newSize)), A12(newSize, vector<double>(newSize)),
+ A21(newSize, vector<double>(newSize)), A22(newSize, vector<double>(newSize)),
+ B11(newSize, vector<double>(newSize)), B12(newSize, vector<double>(newSize)),
+ B21(newSize, vector<double>(newSize)), B22(newSize, vector<double>(newSize));
+ for (int i = 0; i < newSize; ++i) {
+ for (int j = 0; j < newSize; ++j) {
+ A11[i][j] = A[i][j];
+ A12[i][j] = A[i][j + newSize];
+ A21[i][j] = A[i + newSize][j];
+ A22[i][j] = A[i + newSize][j + newSize];
+ B11[i][j] = B[i][j];
+ B12[i][j] = B[i][j + newSize];
+ B21[i][j] = B[i + newSize][j];
+ B22[i][j] = B[i + newSize][j + newSize];
+ }
+ }
+ Matrix M1 = strassen(add(A11, A22), add(B11, B22), operationCount);
+ Matrix M2 = strassen(add(A21, A22), B11, operationCount);
+ Matrix M3 = strassen(A11, subtract(B12, B22), operationCount);
+ Matrix M4 = strassen(A22, subtract(B21, B11), operationCount);
+ Matrix M5 = strassen(add(A11, A12), B22, operationCount);
+ Matrix M6 = strassen(subtract(A21, A11), add(B11, B12), operationCount);
+ Matrix M7 = strassen(subtract(A12, A22), add(B21, B22), operationCount);
+ Matrix C11 = add(subtract(add(M1, M4), M5), M7);
+ Matrix C12 = add(M3, M5);
+ Matrix C21 = add(M2, M4);
+ Matrix C22 = add(subtract(add(M1, M3), M2), M6);
+ Matrix C(n, vector<double>(n));
+ for (int i = 0; i < newSize; ++i) {
+ for (int j = 0; j < newSize; ++j) {
+ C[i][j] = C11[i][j];
+ C[i][j + newSize] = C12[i][j];
+ C[i + newSize][j] = C21[i][j];
+ C[i + newSize][j + newSize] = C22[i][j];
+ }
+ }
+ return C;
+}
+// Main function to test Strassen's algorithm
+int main() {
+ int n = 4; // Size of matrix (n x n), must be a power of 2
+ Matrix A = {
+ {9, 2, 3, 4},
+ {5, 6,5, 8},
+ {9, 19, 11, 12},
+ {13, 16, 15, 16}
+ };
+ Matrix B = {
+ {16, 15, 14, 13},
+ {12, 11, 10, 9},
+ {8, 7, 6, 5},
+ {4, 3, 2, 1}
+ };
+ int operationCount = 0;
+ Matrix C = strassen(A, B, operationCount);
+ cout << "Result matrix:" << endl;
+ for (const auto& row : C) {
+ for (double elem : row) {
+ cout << elem << " ";
+ }
+ cout << endl;
+ }
+ cout << "Number of operations: " << operationCount << endl;
+ return 0;
+}
+
+Matrix Chain Greedy
+---------------------------
+#include <iostream>
+#include <vector>
+using namespace std;
+int matrixChainOrderGreedy(const vector<int>& dimensions) {
+ int n = dimensions.size() - 1; // Number of matrices
+ int minOperations = 0;
+ for (int i = 0; i < n - 1; ++i) {
+ // Find the optimal split point for each pair of adjacent matrices
+ minOperations += dimensions[i] * dimensions[i + 1] * dimensions[i + 2]; // Multiplying cost of
+these three matrices.
+ }
+ return minOperations;
+}
+int main() {
+ vector<int> dimensions = {10, 20, 30, 40, 30}; // Example matrix dimensions
+ int minOperations = matrixChainOrderGreedy(dimensions);
+ cout << "Minimum Scalar Multiplications (Greedy): " << minOperations << endl;
+ return 0;
+}
+
+
+Longest Common Substring LCS
+---------------------------
+#include <iostream>
+#include <string>
+#include <algorithm>
+using namespace std;
+string longestCommonSubstring(const string& str1, const string& str2) {
+ int m = str1.length();
+ int n = str2.length();
+ int dp[m + 1][n + 1];
+ for (int i = 0; i <= m; ++i) {
+ dp[i][0] = 0;
+ }
+ for (int j = 0; j <= n; ++j) {
+ dp[0][j] = 0;
+ }
+ for (int i = 1; i <= m; ++i) {
+ for (int j = 1; j <= n; ++j) {
+ if (str1[i - 1] == str2[j - 1]) {
+ dp[i][j] = dp[i - 1][j - 1] + 1;
+ } else {
+ dp[i][j] = 0;
+ }
+ }
+ }
+ int maxLength = 0;
+ int endingIndex = 0;
+ for (int i = 1; i <= m; ++i) {
+ for (int j = 1; j <= n; ++j) {
+ if (dp[i][j] > maxLength) {
+ maxLength = dp[i][j];
+ endingIndex = i;
+ }
+ }
+ }
+ string longestSubstring = str1.substr(endingIndex - maxLength, maxLength);
+ return longestSubstring;
+}
+int main() {
+ string str1, str2;
+ cout << "Enter the first string: ";
+ cin >> str1;
+ cout << "Enter the second string: ";
+ cin >> str2;
+ string longestSubstr = longestCommonSubstring(str1, str2);
+ cout << "Longest common substring: " << longestSubstr << endl;
+ return 0;
+}
+
+
+
+Huffman Encoding
+------------------
+CODE:
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <map>
+#include <string>
+#include <algorithm>
+#include <functional>
+using namespace std;
+struct Node {
+ char data;
+ int frequency;
+ Node* left;
+ Node* right;
+};
+Node* newNode(char data, int frequency) {
+ Node* newNode = new Node();
+ newNode->data = data;
+ newNode->frequency = frequency;
+ newNode->left = NULL;
+ newNode->right = NULL;
+ return newNode;
+}
+struct compare {
+ bool operator()(Node* l, Node* r) {
+ return (l->frequency > r->frequency);
+ }
+};
+Node* buildHuffmanTree(vector<pair<char, int>>& freq) {
+ priority_queue<Node*, vector<Node*>, compare> pq;
+ for (auto& pair : freq) {
+ Node* node = newNode(pair.first, pair.second);
+ pq.push(node);
+ }
+ while (pq.size() > 1) {
+ Node* left = pq.top();
+ pq.pop();
+ Node* right = pq.top();
+ pq.pop();
+ Node* node = new Node();
+ node->data = '$';
+ node->frequency = left->frequency + right->frequency;
+ node->left = left;
+ node->right = right;
+ pq.push(node);
+ }
+ return pq.top();
+}
+map<char, string> buildHuffmanCodes(Node* root) {
+ map<char, string> huffmanCodes;
+ string code = "";
+ function<void(Node*)> traverse = [&](Node* root) {
+ if (root == NULL) return;
+ if (root->left == NULL && root->right == NULL) {
+ huffmanCodes[root->data] = code;
+ return;
+ }
+ code += "0";
+ traverse(root->left);
+ code = code.substr(0, code.length() - 1);
+ code += "1";
+ traverse(root->right);
+ code = code.substr(0, code.length() - 1);
+ };
+ traverse(root);
+ return huffmanCodes;
+}
+string compressData(string data, map<char, string>& huffmanCodes) {
+ string compressedData = "";
+ for (char c : data) {
+ compressedData += huffmanCodes[c];
+ }
+ return compressedData;
+}
+string decompressData(string compressedData, map<char, string>& huffmanCodes) {
+ string decompressedData = "";
+ string code = "";
+ for (char c : compressedData) {
+ code += c;
+ for (auto& pair : huffmanCodes) {
+ if (code == pair.second) {
+ decompressedData += pair.first;
+ code = "";
+ break;
+ }
+ }
+ }
+ return decompressedData;
+}
+int main() {
+ string data;
+ cin >> data;
+ vector<pair<char, int>> freq;
+ for (char c : data) {
+ bool found = false;
+ for (auto& pair : freq) {
+ if (pair.first == c) {
+ pair.second++;
+ found = true;
+ break;
+ }
+ }
+ if (!found) {
+ freq.push_back({c, 1});
+ }
+ }
+ Node* root = buildHuffmanTree(freq);
+ map<char, string> huffmanCodes = buildHuffmanCodes(root);
+ string compressedData = compressData(data, huffmanCodes);
+ string decompressedData = decompressData(compressedData, huffmanCodes);
+ cout << "Original Data: " << data << endl;
+ cout << "Compressed Data: " << compressedData << endl;
+ cout << "Decompressed Data: " << decompressedData << endl;
+ return 0;
+}
+
+Knapsack problem
+------------------
+CODE:
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+struct Item {
+ int weight;
+ int value;
+};
+int fractionalKnapsack(int W, vector<Item> items) {
+ sort(items.begin(), items.end(), [](Item a, Item b) {
+ return (double)a.value / a.weight > (double)b.value / b.weight;
+ });
+ int totalValue = 0;
+ for (Item item : items) {
+ if (item.weight <= W) {
+ totalValue += item.value;
+ W -= item.weight;
+ } else {
+ totalValue += (double)item.value / item.weight * W;
+ break;
+ }
+ }
+ return totalValue;
+}
+int main() {
+ int W;
+ cout << "Enter the knapsack capacity: ";
+ cin >> W;
+
+ int n;
+ cout << "Enter the number of items: ";
+ cin >> n;
+
+ vector<Item> items(n);
+ for (int i = 0; i < n; i++) {
+ cout << "Enter the weight and value of item " << i + 1 << ": ";
+ cin >> items[i].weight >> items[i].value;
+ }
+
+ int totalValue = fractionalKnapsack(W, items);
+ cout << "Total value: " << totalValue << endl;
+
+ return 0;
+}
+Knapsack 0-1 Problem
+------------------------
+CODE:
+#include <iostream>
+#include <vector>
+using namespace std;
+// Function to solve 0-1 knapsack problem
+int knapsack(int W, vector<int>& wt, vector<int>& val, int n) {
+ // Create a 2D table to store the maximum value
+ vector<vector<int>> dp(n + 1, vector<int>(W + 1, 0));
+ // Fill the table in bottom-up manner
+ for (int i = 1; i <= n; i++) {
+ for (int w = 1; w <= W; w++) {
+ if (wt[i - 1] <= w) {
+ // If weight of current item is less than or equal to the current capacity
+ dp[i][w] = max(val[i - 1] + dp[i - 1][w - wt[i - 1]], dp[i - 1][w]);
+ } else {
+ // If weight of current item is more than the current capacity
+ dp[i][w] = dp[i - 1][w];
+ }
+ }
+ }
+ return dp[n][W];
+}
+int main() {
+ int W, n;
+ cout << "Enter the maximum capacity of the knapsack: ";
+ cin >> W;
+ cout << "Enter the number of items: ";
+ cin >> n;
+ vector<int> val(n);
+ vector<int> wt(n);
+ cout << "Enter the value of each item: ";
+ for (int i = 0; i < n; i++) {
+ cin >> val[i];
+ }
+ cout << "Enter the weight of each item: ";
+ for (int i = 0; i < n; i++) {
+ cin >> wt[i];
+ }
+ int maxVal = knapsack(W, wt, val, n);
+ cout << "Maximum value that can be carried by the knapsack: " << maxVal << endl;
+ return 0;
+}
+Knapsack using recursion
+------------------------
+CODE:
+#include <iostream>
+#include <vector>
+using namespace std;
+int knapsack(vector<int> weights, vector<int> values, int capacity, int i) {
+ if (i < 0 || capacity == 0)
+ return 0;
+
+ if (weights[i] > capacity)
+ return knapsack(weights, values, capacity, i - 1);
+ else
+ return max(values[i] + knapsack(weights, values, capacity - weights[i], i - 1),
+ knapsack(weights, values, capacity, i - 1));
+}
+int main() {
+ int n;
+ cout << "Enter the number of items: ";
+ cin >> n;
+
+ vector<int> weights(n);
+ vector<int> values(n);
+ cout << "Enter the weights and values of the items:" << endl;
+ for (int i = 0; i < n; i++) {
+ cout << "Item " << i + 1 << ": ";
+ cin >> weights[i] >> values[i];
+ }
+
+ int capacity;
+ cout << "Enter the maximum weight capacity of the knapsack: ";
+ cin >> capacity;
+
+ int result = knapsack(weights, values, capacity, n - 1);
+ cout << "Maximum value: " << result << endl;
+ return 0;
+}
+
+TSP using Dynamic Progamming
+
+------------------------------
+
+CODE:
+#include <iostream>
+#include <vector>
+#include <limits>
+#include <chrono>
+using namespace std;
+int tsp(int mask, int pos, const vector<vector<int>>& graph, vector<vector<int>>& dp) {
+if (mask == (1 << graph.size()) - 1) {
+return graph[pos][0];
+}
+if (dp[mask][pos] != -1) {
+return dp[mask][pos];
+}
+int ans = numeric_limits<int>::max();
+for (int city = 0; city < graph.size(); city++) {
+if ((mask & (1 << city)) == 0) {
+int newAns = graph[pos][city] + tsp(mask | (1 << city), city, graph, dp);
+ans = min(ans, newAns);
+}
+}
+return dp[mask][pos] = ans;
+}
+int main() {
+vector<vector<int>> graph = {
+{0, 10, 15, 20},
+{10, 0, 35, 25},
+{15, 35, 0, 30},
+{20, 25, 30, 0}
+};
+int n = graph.size();
+vector<vector<int>> dp(1 << n, vector<int>(n, -1));
+auto start = chrono::high_resolution_clock::now();
+int minCost = tsp(1, 0, graph, dp);
+
+auto end = chrono::high_resolution_clock::now();
+auto elapsed = chrono::duration_cast<chrono::microseconds>(end - start);
+cout << "Minimum cost: " << minCost << endl;
+cout << "Time taken: " << elapsed.count() << " microseconds" << endl;
+return 0;
+}
+
+TSP Using branch and bound 
+------------------------------
+CODE:
+#include <iostream>
+#include <vector>
+#include <limits>
+#include <chrono>
+#include <cmath>
+using namespace std;
+struct Node {
+int level;
+int cost;
+int bound;
+int path[20];
+};
+int calculateBound(Node& node, const vector<vector<int>>& graph, int n) {
+int bound = 0;
+int minCostRow, minCostCol;
+for (int i = 0; i < n; i++) {
+minCostRow = numeric_limits<int>::max();
+for (int j = 0; j < n; j++) {
+if (i != j && graph[i][j] < minCostRow) {
+minCostRow = graph[i][j];
+}
+}
+if (minCostRow != numeric_limits<int>::max()) {
+bound += minCostRow;
+}
+}
+for (int j = 0; j < n; j++) {
+minCostCol = numeric_limits<int>::max();
+for (int i = 0; i < n; i++) {
+
+if (i != j && graph[i][j] < minCostCol) {
+minCostCol = graph[i][j];
+}
+}
+if (minCostCol != numeric_limits<int>::max()) {
+bound += minCostCol;
+}
+}
+return bound / 2; // Divide by 2 to avoid double counting
+}
+void branchAndBoundTSP(const vector<vector<int>>& graph, int n) {
+Node minNode;
+minNode.level = 0;
+minNode.cost = 0;
+minNode.path[0] = 0;
+minNode.bound = calculateBound(minNode, graph, n);
+vector<Node> queue;
+queue.push_back(minNode);
+int minCost = numeric_limits<int>::max();
+while (!queue.empty()) {
+Node currentNode = queue.back();
+queue.pop_back();
+if (currentNode.level == n - 1) {
+if (graph[currentNode.path[currentNode.level]][0] != 0) {
+int currentCost = currentNode.cost + graph[currentNode.path[currentNode.level]][0];
+minCost = min(minCost, currentCost);
+}
+continue;
+}
+for (int i = 0; i < n; i++) {
+if (currentNode.path[currentNode.level] != i && graph[currentNode.path[currentNode.level]][i]
+!= 0) {
+Node newNode;
+newNode.level = currentNode.level + 1;
+newNode.cost = currentNode.cost + graph[currentNode.path[currentNode.level]][i];
+for (int j = 0; j <= currentNode.level; j++) {
+newNode.path[j] = currentNode.path[j];
+}
+newNode.path[newNode.level] = i;
+newNode.bound = calculateBound(newNode, graph, n);
+if (newNode.bound + newNode.cost < minCost) {
+queue.push_back(newNode);
+}
+}
+}
+}
+cout << "Minimum cost: " << minCost << endl;
+}
+
+int main() {
+vector<vector<int>> graph = {
+{0, 10, 15, 20},
+{10, 0, 35, 25},
+{15, 35, 0, 30},
+{20, 25, 30, 0}
+};
+int n = graph.size();
+auto start = chrono::high_resolution_clock::now();
+branchAndBoundTSP(graph, n);
+auto end = chrono::high_resolution_clock::now();
+auto elapsed = chrono::duration_cast<chrono::microseconds>(end - start);
+cout << "Time taken: " << elapsed.count() << " microseconds" << endl;
+return 0;
+}
+
+String Matching Using Robin Karp Algorithm
+------------------------------------------------
+CODE:
+#include <iostream>
+#include <string>
+#include <chrono>
+using namespace std;
+const int d = 256;
+const int q = 101;
+void rabinKarp(const string &text, const string &pattern) {
+int m = pattern.length();
+int n = text.length();
+int p = 0, t = 0, h = 1;
+for (int i = 0; i < m - 1; i++)
+h = (h * d) % q;
+for (int i = 0; i < m; i++) {
+p = (d * p + pattern[i]) % q;
+t = (d * t + text[i]) % q;
+}
+for (int i = 0; i <= n - m; i++) {
+if (p == t) {
+bool match = true;
+for (int j = 0; j < m; j++) {
+if (text[i + j] != pattern[j]) {
+match = false;
+break;
+}
+
+}
+if (match)
+cout << "Pattern found at index " << i << endl;
+}
+if (i < n - m) {
+t = (d * (t - text[i] * h) + text[i + m]) % q;
+if (t < 0)
+t += q;
+}
+}
+}
+int main() {
+string text = "ABABDABACDABABCABAB";
+string pattern = "ABAB";
+auto start = chrono::high_resolution_clock::now();
+rabinKarp(text, pattern);
+auto end = chrono::high_resolution_clock::now();
+chrono::duration<double, std::micro> duration = end - start;
+cout << "Time taken: " << duration.count() << " microseconds" << endl;
+return 0;
+}
+
+String Matching Using KMP Algorithm
+------------------------------------------
+CODE:
+#include <iostream>
+#include <vector>
+#include <chrono>
+#include <string>
+void computeLPSArray(const std::string& pattern, std::vector<int>& lps) {
+int length = 0;
+lps[0] = 0;
+int i = 1;
+while (i < pattern.size()) {
+if (pattern[i] == pattern[length]) {
+length++;
+lps[i] = length;
+i++;
+} else {
+if (length != 0) {
+length = lps[length - 1];
+} else {
+
+lps[i] = 0;
+i++;
+}
+}
+}
+}
+void KMPsearch(const std::string& text, const std::string& pattern) {
+std::vector<int> lps(pattern.size());
+computeLPSArray(pattern, lps);
+int i = 0, j = 0;
+while (i < text.size()) {
+if (pattern[j] == text[i]) {
+i++;
+j++;
+}
+if (j == pattern.size()) {
+std::cout << "Pattern found at index " << i - j << std::endl;
+j = lps[j - 1];
+} else if (i < text.size() && pattern[j] != text[i]) {
+if (j != 0) {
+j = lps[j - 1];
+} else {
+i++;
+}
+}
+}
+}
+int main() {
+std::string text = "ABABDABACDABABCABAB";
+std::string pattern = "ABABCABAB";
+auto start = std::chrono::high_resolution_clock::now();
+KMPsearch(text, pattern);
+auto end = std::chrono::high_resolution_clock::now();
+std::chrono::duration<double, std::milli> elapsed = end - start;
+std::cout << "Time taken: " << elapsed.count() << " ms" << std::endl;
+return 0;
+}
+
+
+Dijikstra’s Algorithm
+
+------------------------
+CODE:
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <limits>
+#include <unordered_map>
+#include <stack>
+#include <chrono>
+using namespace std;
+template<typename T>
+class Graph {
+unordered_map<T, vector<pair<T, int>>> adjList;
+public:
+void addEdge(T u, T v, int w) {
+adjList[u].push_back({v, w});
+adjList[v].push_back({u, w});
+}
+void dijkstra(T source, T destination) {
+unordered_map<T, int> distances;
+unordered_map<T, T> previous;
+for (const auto& pair : adjList) {
+distances[pair.first] = numeric_limits<int>::max();
+}
+distances[source] = 0;
+using pi = pair<int, T>;
+priority_queue<pi, vector<pi>, greater<pi>> pq;
+pq.push({0, source});
+while (!pq.empty()) {
+T node = pq.top().second;
+int dist = pq.top().first;
+pq.pop();
+
+if (dist > distances[node]) continue;
+for (auto neighbor : adjList[node]) {
+T neighborNode = neighbor.first;
+int weight = neighbor.second;
+if (distances[node] + weight < distances[neighborNode]) {
+distances[neighborNode] = distances[node] + weight;
+previous[neighborNode] = node;
+pq.push({distances[neighborNode], neighborNode});
+}
+}
+}
+if (distances[destination] == numeric_limits<int>::max()) {
+cout << "No path from " << source << " to " << destination << endl;
+return;
+}
+cout << "Shortest distance from " << source << " to " << destination << " is " <<
+distances[destination] << endl;
+stack<T> path;
+for (T at = destination; at != source; at = previous[at]) {
+path.push(at);
+}
+path.push(source);
+cout << "Shortest path: ";
+while (!path.empty()) {
+cout << path.top();
+path.pop();
+if (!path.empty()) cout << " -> ";
+}
+cout << endl;
+}
+};
+int main() {
+Graph<int> g;
+int n, e;
+cout << "Enter the number of nodes: ";
+cin >> n;
+cout << "Enter the number of edges: ";
+cin >> e;
+cout << "Enter the edges with their weights (u v w):\n";
+for (int i = 0; i < e; i++) {
+int u, v, w;
+
+cin >> u >> v >> w;
+g.addEdge(u, v, w);
+}
+int source, destination;
+cout << "Enter source node: ";
+cin >> source;
+cout << "Enter destination node: ";
+cin >> destination;
+auto start = chrono::high_resolution_clock::now();
+g.dijkstra(source, destination);
+auto end = chrono::high_resolution_clock::now();
+auto elapsed = chrono::duration_cast<chrono::microseconds>(end-start);
+cout<<"Time taken :"<<elapsed.count()<<" microseconds"<<endl;
+return 0;
+}
+
+Bellman-Floyd
+------------------------
+#include <bits/stdc++.h>
+#include <chrono>
+using namespace std;
+void shortest_distance(vector<vector<int>>& matrix) {
+int n = matrix.size();
+for (int i = 0; i < n; i++) {
+for (int j = 0; j < n; j++) {
+if (matrix[i][j] == -1) {
+matrix[i][j] = 1e9;
+}
+if (i == j) matrix[i][j] = 0;
+
+}
+}
+for (int k = 0; k < n; k++) {
+for (int i = 0; i < n; i++) {
+for (int j = 0; j < n; j++) {
+matrix[i][j] = min(matrix[i][j], matrix[i][k] + matrix[k][j]);
+}
+}
+}
+for (int i = 0; i < n; i++) {
+for (int j = 0; j < n; j++) {
+if (matrix[i][j] == 1e9) {
+matrix[i][j] = -1;
+}
+}
+}
+}
+int main() {
+int V;
+cout << "Enter the number of vertices: ";
+cin >> V;
+vector<vector<int>> matrix(V, vector<int>(V, -1));
+while (true) {
+int from, to, weight;
+cout << "Enter edge (from_vertex to_vertex weight): ";
+cin >> from;
+if (from < 0) break;
+cin >> to >> weight;
+matrix[from][to] = weight;
+}
+auto start = chrono::high_resolution_clock::now();
+shortest_distance(matrix);
+auto end = chrono::high_resolution_clock::now();
+auto elapsed = chrono::duration_cast<chrono::microseconds>(end-start);
+cout << "Shortest distance matrix:\n";
+for (const auto& row : matrix) {
+for (const auto& cell : row) {
+cout << (cell == 1e9 ? -1 : cell) << " ";
+}
+cout << endl;
+}
+
+int src, dest;
+cout << "Enter source vertex to find the shortest distance from: ";
+cin >> src;
+cout << "Enter destination vertex to find the shortest distance to: ";
+cin >> dest;
+if (matrix[src][dest] != -1) {
+cout << "Shortest distance between vertex " << src
+<< " and vertex " << dest << " is: " << matrix[src][dest] << endl;
+} else {
+cout << "There is no path between vertex " << src
+<< " and vertex " << dest << endl;
+}
+cout<<"Time taken: "<<elapsed.count()<<" ms"<<endl;
+return 0;
+}
+
+
+Floyd Warshall Algorithm
+------------------------------
+#include <bits/stdc++.h>
+using namespace std;
+vector<int> bellman_ford(int v, vector<vector<int>>& edges, int s) {
+
+vector<int> dist(v, 1e8);
+dist[s] = 0;
+for (int i = 0; i < v - 1; i++) {
+for (auto it : edges) {
+int u = it[0];
+int v = it[1];
+int wt = it[2];
+if (dist[u] != 1e8 && dist[u] + wt < dist[v]) {
+dist[v] = dist[u] + wt;
+}
+}
+}
+for (auto it : edges) {
+int u = it[0];
+int v = it[1];
+int wt = it[2];
+if (dist[u] != 1e8 && dist[u] + wt < dist[v]) {
+return {-1};
+}
+}
+return dist;
+}
+int main() {
+int v, e;
+cout << "Enter number of vertices: ";
+cin >> v;
+cout << "Enter number of edges: ";
+cin >> e;
+vector<vector<int>> edges(e, vector<int>(3));
+cout << "Enter edges (u v w - edge from u to v with weight w):" << endl;
+for (int i = 0; i < e; i++) {
+cin >> edges[i][0] >> edges[i][1] >> edges[i][2];
+}
+int s;
+cout << "Enter the source vertex: ";
+cin >> s;
+clock_t start = clock();
+vector<int> dist = bellman_ford(v, edges, s);
+clock_t end = clock();
+double time_taken = (end - start) / (double)CLOCKS_PER_SEC;
+if (dist.size() == 1 && dist[0] == -1) {
+
+cout << "Negative weight cycle detected." << endl;
+} else {
+cout << "Vertex distances from source " << s << ":" << endl;
+for (int i = 0; i < v; i++) {
+if (dist[i] == 1e8) {
+cout << "Vertex " << i << ": INF" << endl;
+} else {
+cout << "Vertex " << i << ": " << dist[i] << endl;
+}
+}
+}
+cout << "Time taken: " << time_taken << " seconds." << endl;
+return 0;
+}
+
+
+ Maximum flow - Ford-Fulkerson Algorithm
+------------------------------------
+#include <iostream>
+#include <limits.h>
+#include <queue>
+#include <string.h>
+#include <chrono>
+using namespace std;
+
+#define V 6
+
+bool bfs(int rGraph[V][V], int s, int t, int parent[]) {
+bool visited[V];
+memset(visited, 0, sizeof(visited));
+
+queue<int> q;
+q.push(s);
+visited[s] = true;
+parent[s] = -1;
+
+while (!q.empty()) {
+int u = q.front();
+q.pop();
+
+for (int v = 0; v < V; v++) {
+if (visited[v] == false && rGraph[u][v] > 0) {
+if (v == t) {
+
+parent[v] = u;
+return true;
+}
+q.push(v);
+parent[v] = u;
+visited[v] = true;
+}
+}
+}
+return false;
+}
+
+// Returns the maximum flow from s to t in the given graph
+int fordFulkerson(int graph[V][V], int s, int t) {
+int u, v;
+int rGraph[V][V];
+
+for (u = 0; u < V; u++)
+for (v = 0; v < V; v++)
+rGraph[u][v] = graph[u][v];
+
+int parent[V];
+int max_flow = 0;
+
+while (bfs(rGraph, s, t, parent)) {
+int path_flow = INT_MAX;
+
+for (v = t; v != s; v = parent[v]) {
+u = parent[v];
+path_flow = min(path_flow, rGraph[u][v]);
+}
+
+for (v = t; v != s; v = parent[v]) {
+
+u = parent[v];
+rGraph[u][v] -= path_flow;
+rGraph[v][u] += path_flow;
+}
+
+max_flow += path_flow;
+}
+return max_flow;
+}
+
+int main() {
+int graph[V][V] = { { 0, 16, 13, 0, 0, 0 },
+{ 0, 0, 10, 12, 0, 0 },
+{ 0, 4, 0, 0, 14, 0 },
+{ 0, 0, 9, 0, 0, 20 },
+{ 0, 0, 0, 7, 0, 4 },
+{ 0, 0, 0, 0, 0, 0 } };
+
+auto start = chrono::high_resolution_clock::now();
+cout << "The maximum possible flow is " << fordFulkerson(graph, 0, 5) << endl;
+auto end = chrono::high_resolution_clock::now();
+
+chrono::duration<double, milli> duration = end - start;
+cout << "Execution Time: " << duration.count() << " ms" << endl;
+
+return 0;
+}
+
+ Maximum flow - Edmond-Karp Algorithm
+------------------------------------------
+#include <iostream>
+#include <limits.h>
+#include <queue>
+#include <string.h>
+#include <chrono>
+using namespace std;
+#define V 6
+bool bfs(int rGraph[V][V], int s, int t, int parent[]) {
+bool visited[V];
+memset(visited, 0, sizeof(visited));
+queue<int> q;
+q.push(s);
+visited[s] = true;
+parent[s] = -1;
+while (!q.empty()) {
+int u = q.front();
+q.pop();
+for (int v = 0; v < V; v++) {
+if (!visited[v] && rGraph[u][v] > 0) {
+q.push(v);
+parent[v] = u;
+visited[v] = true;
+if (v == t) {
+return true;
+}
+}
+}
+}
+return false;
+}
+int edmondsKarp(int graph[V][V], int s, int t) {
+int u, v;
+int rGraph[V][V];
+for (u = 0; u < V; u++)
+for (v = 0; v < V; v++)
+rGraph[u][v] = graph[u][v];
+int parent[V];
+int max_flow = 0;
+while (bfs(rGraph, s, t, parent)) {
+int path_flow = INT_MAX;
+
+for (v = t; v != s; v = parent[v]) {
+u = parent[v];
+path_flow = min(path_flow, rGraph[u][v]);
+}
+for (v = t; v != s; v = parent[v]) {
+u = parent[v];
+rGraph[u][v] -= path_flow;
+rGraph[v][u] += path_flow;
+}
+max_flow += path_flow;
+}
+return max_flow;
+}
+int main() {
+int graph[V][V] = { { 0, 16, 13, 0, 0, 0 },
+{ 0, 0, 10, 12, 0, 0 },
+{ 0, 4, 0, 0, 14, 0 },
+{ 0, 0, 9, 0, 0, 20 },
+{ 0, 0, 0, 7, 0, 4 },
+{ 0, 0, 0, 0, 0, 0 } };
+auto start = chrono::high_resolution_clock::now();
+cout << "The maximum possible flow is " << edmondsKarp(graph, 0, 5) << endl;
+auto end = chrono::high_resolution_clock::now();
+chrono::duration<double, milli> duration = end - start;
+cout << "Execution Time: " << duration.count() << " ms" << endl;
+return 0;
+}
+
+Maximum flow - Ford-Fulkerson, Edmond-Karp, Push Re-label Algorithm
+------------------------------------------------------------
+#include <iostream>
+#include <limits.h>
+#include <chrono>
+#include <vector>
+#include <queue>
+using namespace std;
+struct Edge {
+int flow, capacity;
+int u, v;
+Edge(int flow, int capacity, int u, int v) {
+this->flow = flow;
+this->capacity = capacity;
+this->u = u;
+this->v = v;
+}
+};
+struct Vertex {
+int h, e_flow;
+Vertex(int h, int e_flow) {
+this->h = h;
+this->e_flow = e_flow;
+}
+};
+class Graph {
+int V;
+vector<Vertex> ver;
+vector<Edge> edge;
+bool push(int u);
+void relabel(int u);
+void preflow(int s);
+void updateReverseEdgeFlow(int i, int flow);
+public:
+Graph(int V);
+void addEdge(int u, int v, int w);
+int getMaxFlow(int s, int t);
+
+};
+Graph::Graph(int V) {
+this->V = V;
+for (int i = 0; i < V; i++)
+ver.push_back(Vertex(0, 0));
+}
+void Graph::addEdge(int u, int v, int capacity) {
+edge.push_back(Edge(0, capacity, u, v));
+}
+void Graph::preflow(int s) {
+ver[s].h = ver.size();
+for (int i = 0; i < edge.size(); i++) {
+if (edge[i].u == s) {
+edge[i].flow = edge[i].capacity;
+ver[edge[i].v].e_flow += edge[i].flow;
+edge.push_back(Edge(-edge[i].flow, 0, edge[i].v, s));
+}
+}
+}
+int overFlowVertex(vector<Vertex>& ver) {
+for (int i = 1; i < ver.size() - 1; i++)
+if (ver[i].e_flow > 0)
+return i;
+return -1;
+}
+void Graph::updateReverseEdgeFlow(int i, int flow) {
+int u = edge[i].v, v = edge[i].u;
+for (int j = 0; j < edge.size(); j++) {
+if (edge[j].v == v && edge[j].u == u) {
+edge[j].flow -= flow;
+return;
+}
+}
+Edge e = Edge(0, flow, u, v);
+edge.push_back(e);
+}
+bool Graph::push(int u) {
+for (int i = 0; i < edge.size(); i++) {
+
+if (edge[i].u == u) {
+if (edge[i].flow == edge[i].capacity)
+continue;
+if (ver[u].h > ver[edge[i].v].h) {
+int flow = min(edge[i].capacity - edge[i].flow, ver[u].e_flow);
+ver[u].e_flow -= flow;
+ver[edge[i].v].e_flow += flow;
+edge[i].flow += flow;
+updateReverseEdgeFlow(i, flow);
+return true;
+}
+}
+}
+return false;
+}
+void Graph::relabel(int u) {
+int mh = INT_MAX;
+for (int i = 0; i < edge.size(); i++) {
+if (edge[i].u == u) {
+if (edge[i].flow == edge[i].capacity)
+continue;
+if (ver[edge[i].v].h < mh) {
+mh = ver[edge[i].v].h;
+ver[u].h = mh + 1;
+}
+}
+}
+}
+int Graph::getMaxFlow(int s, int t) {
+preflow(s);
+while (overFlowVertex(ver) != -1) {
+int u = overFlowVertex(ver);
+if (!push(u))
+relabel(u);
+}
+return ver.back().e_flow;
+}
+int main() {
+auto start = chrono::high_resolution_clock::now();
+int V = 6;
+
+Graph g(V);
+g.addEdge(0, 1, 16);
+g.addEdge(0, 2, 13);
+g.addEdge(1, 2, 10);
+g.addEdge(2, 1, 4);
+g.addEdge(1, 3, 12);
+g.addEdge(2, 4, 14);
+g.addEdge(3, 2, 9);
+g.addEdge(3, 5, 20);
+g.addEdge(4, 3, 7);
+g.addEdge(4, 5, 4);
+int s = 0, t = 5;
+cout << "Maximum flow is " << g.getMaxFlow(s, t) << endl;
+auto end = chrono::high_resolution_clock::now();
+chrono::duration<double, milli> duration = end - start;
+cout << "Execution Time: " << duration.count() << " ms" << endl;
+return 0;
+}
+
+ Intersection of Line segments
+------------------------------------
+#include <iostream>
+#include <chrono>
+using namespace std;
+using namespace chrono;
+struct Point{
+int x,y;
+};
+int ori(Point p,Point q,Point r){
+int val=(q.y-p.y)*(r.x-q.x)-(q.x-p.x)*(r.y-q.y);
+if(val==0) return 0;
+return (val>0)?1:2;
+}
+bool onseg(Point p,Point q,Point r){
+return q.x <= max(p.x,r.x)&&q.x >= min(p.x , r.x) && q.y <= max(p.y,r.y) && q.y >= min(p.y,r.y);
+}
+bool dointer(Point p1,Point q1,Point p2 ,Point q2){
+int o1 = ori(p1,q1,p2);
+int o2 = ori(p1,q1,q2);
+int o3 = ori(p2,q2,p1);
+int o4 = ori(p2,q2,q1);
+if(o1!=o2 && o3!=o4){
+return true;
+}
+if(o1==0 && onseg(p1,p2,q1))return true;
+if(o2==0 && onseg(p1,q2,q1))return true;
+if(o3==0 && onseg(p2,p1,q2))return true;
+if(o4==0 && onseg(p2,q1,q2))return true;
+return false;
+}
+int main(){
+Point p1,q1,p2,q2;
+cout<<"Enter the co-ordinates of the first line segment (p1 and q1)\n";
+cout<<"p1(x y) : ";
+cin>>p1.x>>p1.y;
+cout<<"q1(x y) :";
+cin>>q1.x>>q1.y;
+cout<<"Enter the co-ordinates of the second line segment (p2 and q2)\n";
+cout<<"p2(x y) : ";
+cin>>p2.x>>p2.y;
+cout<<"q2(x y) :";
+cin>>q2.x>>q2.y;
+auto start = high_resolution_clock::now();
+if(dointer(p1,q1,p2,q2)){
+cout<<"\nThe line segments intersect.\n";
+}
+
+else{
+cout<<"\nThe line segments do not intersect\n";
+}
+auto end = high_resolution_clock::now();
+auto duration = duration_cast<microseconds>(end - start);
+cout << "Execution time: " << duration.count() << " microseconds" << endl;
+return 0;
+}
+
+Closest pair of points
+------------------------
+#include <iostream>
+#include <vector>
+#include <cmath>
+#include <algorithm>
+#include <float.h>
+#include <chrono>
+using namespace std;
+using namespace chrono;
+struct Point {
+int x, y;
+};
+double distance(Point p1, Point p2) {
+return sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y));
+}
+double bruteForce(vector<Point>& points, int left, int right, Point &closest1, Point &closest2) {
+double minDist = DBL_MAX;
+for (int i = left; i < right; ++i) {
+for (int j = i + 1; j <= right; ++j) {
+double dist = distance(points[i], points[j]);
+if (dist < minDist) {
+minDist = dist;
+closest1 = points[i];
+closest2 = points[j];
+}
+}
+}
+return minDist;
+}
+double stripClosest(vector<Point>& strip, double d, Point &closest1, Point &closest2) {
+double minDist = d;
+sort(strip.begin(), strip.end(), [](Point a, Point b) { return a.y < b.y; });
+
+for (size_t i = 0; i < strip.size(); ++i) {
+for (size_t j = i + 1; j < strip.size() && (strip[j].y - strip[i].y) < minDist; ++j) {
+double dist = distance(strip[i], strip[j]);
+if (dist < minDist) {
+minDist = dist;
+closest1 = strip[i];
+closest2 = strip[j];
+}
+}
+}
+return minDist;
+}
+double closestPairUtil(vector<Point>& points, int left, int right, Point &closest1, Point &closest2) {
+if (right - left <= 3) {
+return bruteFor, leftClosest2, rightClosest1, rightClosest2;
+double dl = closestPairUtil(points, left, mid, leftClosest1, leftClosest2);
+double dr = closestPairUtil(points, mid + 1, right, rightClosest1, rightClosest2);
+double d = dl < dr ? dl : dr;
+if (dl < dr) {
+closest1 = leftClosest1;
+closest2 = leftClosest2;
+} else {
+closest1 = rightClosest1;
+closest2 = rightClosest2;
+}
+vector<Point> strip;
+for (int i = left; i <= right; i++) {
+if (abs(points[i].x - midPoint.x) < d) {
+strip.push_back(points[i]);
+}
+}
+return min(d, stripClosest(strip, d, closest1, closest2));
+}
+double closestPair(vector<Point>& points, Point &closest1, Point &closest2) {
+sort(points.begin(), points.end(), [](Point a, Point b) { return a.x < b.x; });
+return closestPairUtil(points, 0, points.size() - 1, closest1, closest2);
+}
+int main() {
+int n;
+cout << "Enter the number of points: ";
+cin >> n;
+vector<Point> points(n);
+cout << "Enter the points (x y):" << endl;
+for (int i = 0; i < n; ++i) {
+cin >> points[i].x >> points[i].y;
+}
+Point closest1, closest2;
+auto start = high_resolution_clock::now();
+double result = closestPair(points, closest1, closest2);
+auto end = high_resolution_clock::now();
+auto duration = duration_cast<microseconds>(end - start);
+cout << "The closest pair of points is: (" << closest1.x << ", " << closest1.y << ") and ("
+
+<< closest2.x << ", " << closest2.y << ")" << endl;
+cout << "The smallest distance between two points is: " << result << endl;
+cout << "Execution time: " << duration.count() << " microseconds" << endl;
+return 0;
+}ce(points, left, right, closest1, closest2);
+}
+int mid = left + (right - left) / 2;
+Point midPoint = points[mid];
+Point leftClosest1, leftClosest2, rightClosest1, rightClosest2;
+double dl = closestPairUtil(points, left, mid, leftClosest1, leftClosest2);
+double dr = closestPairUtil(points, mid + 1, right, rightClosest1, rightClosest2);
+double d = dl < dr ? dl : dr;
+if (dl < dr) {
+closest1 = leftClosest1;
+closest2 = leftClosest2;
+} else {
+closest1 = rightClosest1;
+closest2 = rightClosest2;
+}
+vector<Point> strip;
+for (int i = left; i <= right; i++) {
+if (abs(points[i].x - midPoint.x) < d) {
+strip.push_back(points[i]);
+}
+}
+return min(d, stripClosest(strip, d, closest1, closest2));
+}
+double closestPair(vector<Point>& points, Point &closest1, Point &closest2) {
+sort(points.begin(), points.end(), [](Point a, Point b) { return a.x < b.x; });
+return closestPairUtil(points, 0, points.size() - 1, closest1, closest2);
+}
+int main() {
+int n;
+cout << "Enter the number of points: ";
+cin >> n;
+vector<Point> points(n);
+cout << "Enter the points (x y):" << endl;
+for (int i = 0; i < n; ++i) {
+cin >> points[i].x >> points[i].y;
+}
+Point closest1, closest2;
+auto start = high_resolution_clock::now();
+double result = closestPair(points, closest1, closest2);
+auto end = high_resolution_clock::now();
+auto duration = duration_cast<microseconds>(end - start);
+cout << "The closest pair of points is: (" << closest1.x << ", " << closest1.y << ") and ("
+<< closest2.x << ", " << closest2.y << ")" << endl;
+cout << "The smallest distance between two points is: " << result << endl;
+cout << "Execution time: " << duration.count() << " microseconds" << endl;
+return 0;
+}
